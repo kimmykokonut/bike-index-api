@@ -18,7 +18,10 @@ function getStolenInfo(zip) {
 
 function printElements(response, zip) {
   const bikes = response.bikes;
-  const responseDiv = document.querySelector('#response-header'); `Stolen bikes near ${zip}:`
+  const responseDiv = document.querySelector('#response'); 
+  const responseDivHeader = document.querySelector('#response-header'); 
+  responseDivHeader.innerText = '';
+  responseDivHeader.append(`Stolen bikes near ${zip}: `);
 
   if(bikes && bikes.length > 0) {
     responseDiv.innerHTML = '';
@@ -31,7 +34,6 @@ function printElements(response, zip) {
     });
     responseDiv.appendChild(list);
   }
-  // document.querySelector('#response').innerText = `Stolen bikes near ${zip}: ${response.bikes[0].manufacturer_name}`;
 }
 
 function printError(error, zip) {
