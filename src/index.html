@@ -1,19 +1,38 @@
 <!DOCTYPE html>
 <html lang="en-US">
+
 <head>
-      <title>Using Bike Index API</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap" rel="stylesheet">
+  <title>Using Bike Index API</title>
 </head>
+
 <body>
-  <h1>Stolen bike report</h1>
-  <img class="img-fluid" src="./assets/images/stock-puppy-photo.jpg" alt="brown dog"/>
-  <h2>See a list of bikes stolen in the past week by location</h2>
-  <form id="stolen-form">
-    <label for="location">Enter a location:</label>
-    <input id="location" type="text">
-    <button type="submit">Show Me</button>
-  </form>
-  <br>
-  <div id="response-header"></div>
-  <div id="response"></div>
+  <div class="container text-center">
+    <h1>Stolen bike report</h1>
+    <img id="img-head" class="img-fluid rounded mx-auto d-block" src="./assets/images/silhouette.jpg" alt="bike at sunset" />
+    <br>
+    <h2>See a list of bikes stolen in the past week by location</h2>
+    <br>
+    <form id="stolen-form" class="form-container mx-auto d-block">
+      <label for="location">Enter a location:</label>
+      <input id="location" type="text">
+      <button type="submit">Show Me</button>
+    </form>
+    <br>
+    <div class="row">
+      <div class="col-8 rounded mx-auto d-block">
+        <div class="card container-text-center">
+          <img class="card-img-top img-fluid" src="./assets/images/ufo.jpg" alt="bike">
+          <div class="card-body">
+            <h3 id="response-header" class="card-title"></h3>
+            <div id="response" class="card-text"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
+
 </html>

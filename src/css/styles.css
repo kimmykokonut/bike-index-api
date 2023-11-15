@@ -1,3 +1,45 @@
 body {
+  background-color: darkgray;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+#img-head {
+  width: auto;
+  height: 20vh;
+  object-fit: scale-down;
+}
+
+.card-body {
+  display: inline-block;
+  border: 1px solid black;
+  padding: 50px;
+  padding-left: 50px;
+  margin: 80px;
   background-color: lightgray;
+}
+
+.card-img-top {
+  display: block;
+  width: 30vw;
+  height: auto;
+  object-fit: scale-down;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 5px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.form-container {
+  display: flex;
+  align-items: center;
+}
+
+form label, 
+form input, 
+form button {
+  margin-right: 10px;
 }

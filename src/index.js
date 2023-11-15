@@ -17,7 +17,12 @@ function getStolenInfo(zip) {
 function convertEpoch(epoch) {
   const epochMilliseconds = epoch * 1000;
   const date = new Date(epochMilliseconds);
-  return date;
+
+  let year = date.getFullYear();
+  let month = (date.getMonth() +1).toString();
+  let day = date.getDate().toString();
+
+  return `${month}-${day}-${year}`;
 }
 
 // UI Logic
@@ -36,10 +41,11 @@ function printElements(response, zip) {
       const epochTime = bike.date_stolen;
       const standardTime = convertEpoch(epochTime);
       const listItem = document.createElement ('li');
-      listItem.innerText = `${bike.manufacturer_name}, ${standardTime}`;
+      listItem.innerText = `Brand: ${bike.manufacturer_name}, Color: ${bike.frame_colors}, Date missing: ${standardTime}`;
       list.appendChild(listItem);
     });
     responseDiv.appendChild(list);
+
   }
 }
 
