@@ -1,21 +1,36 @@
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
-import Triangle from './js/triangle.js';
+import BikeService from './bike-service.js';
 
-function handleTriangleForm(e) {
+function getStolenInfo(zip) {
+  BikeService.getStolenInfo(zip)
+    .then(function(response) {
+      if (response.bikes) {
+        printElements(response, zip);
+    } else {
+      printError(response, zip)
+    }
+  });
+}
+// UI Logic
+
+function printElements(response, zip) {
+  document.querySelector('#response').innerText = `Stolen bikes near ${zip}: ${response.bikes[0].manufacturer_name}`;
+}
+
+function printError(error, zip) {
+  document.querySelector('#response').innerText = `There was an error accessing the data for ${zip}: ${error.message}.`;
+  console.log(error);
+}
+
+function handleZipForm(e) {
   e.preventDefault();
-  document.querySelector('#response').innerText = null;
-  const length2 = parseInt(document.querySelector('#length2').value);
-  const length1 = parseInt(document.querySelector('#length1').value);
-  const length3 = parseInt(document.querySelector('#length3').value);
-  const triangle = new Triangle(length1, length2, length3);
-  const response = triangle.checkType();
-  const pTag = document.createElement("p");
-  pTag.append(response);
-  document.querySelector('#response').append(pTag);
+  const zip = document.querySelector('#location').value;
+  document.querySelector('#location').innerText = null;
+  getStolenInfo(zip);
 }
 
 window.addEventListener("load", function () {
-  document.querySelector("#triangle-checker-form").addEventListener("submit", handleTriangleForm);
+  document.querySelector("#stolen-form").addEventListener("submit", handleZipForm);
 });

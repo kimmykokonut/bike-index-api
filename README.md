@@ -1,8 +1,8 @@
-# Template Repository
+# Bike Index API
 
-#### with __tests__, coverage, jest, .env, .gitignore, lint, cleanwebpack, htmlwebpack 
+#### with api calls-fetch, .env, .gitignore, lint, cleanwebpack, htmlwebpack 
 
-#### By (Your Name Here)
+#### By Kim Robinson & Brianca Knight
 
 ## Technologies Used
 
@@ -11,7 +11,7 @@
 * _you used in your project_
 * _here_
 
-## Description
+##Build an app using the Bike Index API. Your app could list all the bikes that have been registered as stolen in a given location in the past week. Or it could display statistics — for instance, you could see which manufacturer is most frequently stolen in a given area.
 
 ## Setup/Installation Requirements
 
