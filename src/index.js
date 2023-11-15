@@ -13,10 +13,25 @@ function getStolenInfo(zip) {
     }
   });
 }
+
 // UI Logic
 
 function printElements(response, zip) {
-  document.querySelector('#response').innerText = `Stolen bikes near ${zip}: ${response.bikes[0].manufacturer_name}`;
+  const bikes = response.bikes;
+  const responseDiv = document.querySelector('#response-header'); `Stolen bikes near ${zip}:`
+
+  if(bikes && bikes.length > 0) {
+    responseDiv.innerHTML = '';
+    document.querySelector('#response').innerText = '';
+    const list = document.createElement('ul');
+    bikes.forEach((bike) => {
+      const listItem = document.createElement ('li');
+      listItem.innerText = `${bike.manufacturer_name}`;
+      list.appendChild(listItem);
+    });
+    responseDiv.appendChild(list);
+  }
+  // document.querySelector('#response').innerText = `Stolen bikes near ${zip}: ${response.bikes[0].manufacturer_name}`;
 }
 
 function printError(error, zip) {
