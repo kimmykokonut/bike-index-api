@@ -14,6 +14,12 @@ function getStolenInfo(zip) {
   });
 }
 
+function convertEpoch(epoch) {
+  const epochMilliseconds = epoch * 1000;
+  const date = new Date(epochMilliseconds);
+  return date;
+}
+
 // UI Logic
 
 function printElements(response, zip) {
@@ -22,14 +28,15 @@ function printElements(response, zip) {
   const responseDivHeader = document.querySelector('#response-header'); 
   responseDivHeader.innerText = '';
   responseDivHeader.append(`Stolen bikes near ${zip}: `);
-
   if(bikes && bikes.length > 0) {
     responseDiv.innerHTML = '';
     document.querySelector('#response').innerText = '';
     const list = document.createElement('ul');
     bikes.forEach((bike) => {
+      const epochTime = bike.date_stolen;
+      const standardTime = convertEpoch(epochTime);
       const listItem = document.createElement ('li');
-      listItem.innerText = `${bike.manufacturer_name}`;
+      listItem.innerText = `${bike.manufacturer_name}, ${standardTime}`;
       list.appendChild(listItem);
     });
     responseDiv.appendChild(list);
