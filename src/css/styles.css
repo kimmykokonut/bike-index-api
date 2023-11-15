@@ -43,3 +43,16 @@ form input,
 form button {
   margin-right: 10px;
 }
+
+.dynamic-list {
+  list-style: none;
+  padding: 0;
+}
+
+.even-item {
+  background-color: lightgray;
+}
+
+.odd-item {
+  background-color: white;
+}

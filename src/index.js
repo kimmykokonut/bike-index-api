@@ -5,13 +5,13 @@ import BikeService from './bike-service.js';
 
 function getStolenInfo(zip) {
   BikeService.getStolenInfo(zip)
-    .then(function(response) {
+    .then(function (response) {
       if (response.bikes) {
         printElements(response, zip);
-    } else {
-      printError(response, zip)
-    }
-  });
+      } else {
+        printError(response, zip)
+      }
+    });
 }
 
 function convertEpoch(epoch) {
@@ -19,7 +19,7 @@ function convertEpoch(epoch) {
   const date = new Date(epochMilliseconds);
 
   let year = date.getFullYear();
-  let month = (date.getMonth() +1).toString();
+  let month = (date.getMonth() + 1).toString();
   let day = date.getDate().toString();
 
   return `${month}-${day}-${year}`;
@@ -29,23 +29,27 @@ function convertEpoch(epoch) {
 
 function printElements(response, zip) {
   const bikes = response.bikes;
-  const responseDiv = document.querySelector('#response'); 
-  const responseDivHeader = document.querySelector('#response-header'); 
-  responseDivHeader.innerText = '';
-  responseDivHeader.append(`Stolen bikes near ${zip}: `);
-  if(bikes && bikes.length > 0) {
+  const responseDiv = document.querySelector('#response');
+  const responseH3 = document.querySelector('#response-header');
+  responseH3.innerText = '';
+  responseH3.append(`Stolen bikes near ${zip}: `);
+  if (bikes && bikes.length > 0) {
     responseDiv.innerHTML = '';
     document.querySelector('#response').innerText = '';
     const list = document.createElement('ul');
-    bikes.forEach((bike) => {
+    list.classList.add('dynamic-list');
+
+    bikes.forEach((bike, index) => {
       const epochTime = bike.date_stolen;
       const standardTime = convertEpoch(epochTime);
-      const listItem = document.createElement ('li');
+      const listItem = document.createElement('li');
       listItem.innerText = `Brand: ${bike.manufacturer_name}, Color: ${bike.frame_colors}, Date missing: ${standardTime}`;
       list.appendChild(listItem);
+
+      listItem.classList.add(index % 2 === 0 ? 'even-item' : 'odd-item');
+
     });
     responseDiv.appendChild(list);
-
   }
 }
 
