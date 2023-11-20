@@ -5,7 +5,7 @@ export default class BikeService {
         if (!response.ok) {
           return response.json()
             .then(function(apiErrorMessage) {
-              const errorMessage = `${response.status} ${response.statusText}${apiErrorMessage.message}`;
+              const errorMessage = `${response.status} ${response.statusText}${apiErrorMessage.error}`;
               throw new Error(errorMessage);
             });
         } else {
