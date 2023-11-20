@@ -23,8 +23,7 @@
 
 ## Known Bugs
 
-* _Any known issues_
-* _should go here_
+* api search engine does not error for non-location inputs. result is still provided.
 
 ## License
 
